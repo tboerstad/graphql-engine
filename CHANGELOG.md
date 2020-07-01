@@ -22,6 +22,7 @@
 - console: allow manual edit of column types and handle array data types (close #2544, #3335, #2583) (#4546)
 - console: add the ability to delete a role in permissions summary page (close #3353) (#4987)
 - cli: handle missing files during metadata apply (close #5163) (#5170)
+- docs: add page on scheduled triggers (close #4913) (#5141)
 - docs: add page on Relay schema (close #4912) (#5150)
 
 ## `v1.3.0-beta.2`
