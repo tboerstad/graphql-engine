@@ -7,6 +7,7 @@
 (Add entries here in the order of: server, console, cli, docs, others)
 
 - docs: add note for managed databases in postgres requirements (close #1677, #3783) (#5228)
+- docs: add hasura cloud to getting started section (close #5206) (#5208)
 
 
 ## `v1.3.0-beta.3`
