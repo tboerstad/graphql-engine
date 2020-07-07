@@ -118,6 +118,7 @@ func (r *APIServer) setLogger(logger *logrus.Logger) gin.HandlerFunc {
 
 func allowCors() gin.HandlerFunc {
 	var config = cors.DefaultConfig()
+	config.AddAllowHeaders("Authorization")
 	config.AddAllowHeaders("X-Hasura-User-Id")
 	config.AddAllowHeaders(cli.XHasuraAccessKey)
 	config.AddAllowHeaders(cli.XHasuraAdminSecret)

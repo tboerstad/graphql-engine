@@ -206,6 +206,12 @@ func TestIncompleteMetadataDir(t *testing.T, ec *cli.ExecutionContext) {
 			if ec.Config.AdminSecret != "" {
 				req.Header.Set(cli.XHasuraAdminSecret, ec.Config.AdminSecret)
 			}
+
+			token, success := os.LookupEnv("AUTH_TOKEN")
+			if success {
+				req.Header.Set("Authorization", "Bearer " + token)
+			}
+
 			c := http.Client{}
 			resp, err := c.Do(req)
 

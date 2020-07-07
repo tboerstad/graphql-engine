@@ -183,6 +183,11 @@ func (c *ServerConfig) GetHasuraInternalServerConfig() error {
 		req.Header.Set(XHasuraAdminSecret, c.AdminSecret)
 	}
 
+	token, success := os.LookupEnv("AUTH_TOKEN")
+	if success {
+		req.Header.Set("Authorization", "Bearer " + token)
+	}	
+
 	r, err := client.Do(req)
 	if err != nil {
 		return err

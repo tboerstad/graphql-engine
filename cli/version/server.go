@@ -3,6 +3,7 @@ package version
 import (
 	"io/ioutil"
 	"net/http"
+	"os"
 
 	yaml "github.com/ghodss/yaml"
 	"github.com/pkg/errors"
@@ -14,7 +15,14 @@ type serverVersionResponse struct {
 
 // FetchServerVersion reads the version from server.
 func FetchServerVersion(endpoint string, client *http.Client) (version string, err error) {
-	response, err := client.Get(endpoint)
+	req, err := http.NewRequest("GET", endpoint, nil)
+	
+	token, success := os.LookupEnv("AUTH_TOKEN")
+	if success {
+		req.Header.Set("Authorization", "Bearer " + token)
+	}	
+
+	response, err := client.Do(req)
 	if err != nil {
 		return "", errors.Wrap(err, "failed making version api call")
 	}
